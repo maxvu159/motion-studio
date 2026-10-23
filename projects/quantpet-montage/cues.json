@@ -1,0 +1,1365 @@
+{
+ "total": 50.0,
+ "cues": [
+  {
+   "t": 0.0,
+   "file": "local/sfx/ticker.wav",
+   "a": 0,
+   "b": null,
+   "db": -8,
+   "fx": "none"
+  },
+  {
+   "t": 0.4,
+   "file": "local/footage/old/01-margin-call.mp4",
+   "a": 2.4,
+   "b": 5.25,
+   "db": 0,
+   "fx": "film"
+  },
+  {
+   "t": 3.6486486486486487,
+   "file": "local/footage/old/01-margin-call.mp4",
+   "a": 5.72,
+   "b": 6.45,
+   "db": 1,
+   "fx": "film"
+  },
+  {
+   "t": 4.45945945945946,
+   "file": "local/footage/old/01-margin-call.mp4",
+   "a": 6.98,
+   "b": 7.85,
+   "db": 1,
+   "fx": "film"
+  },
+  {
+   "t": 5.472972972972974,
+   "file": "local/footage/old/01-margin-call.mp4",
+   "a": 8.3,
+   "b": 9.05,
+   "db": 2,
+   "fx": "film"
+  },
+  {
+   "t": 6.486486486486487,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -4,
+   "fx": "none"
+  },
+  {
+   "t": 8.6,
+   "file": "local/footage/old/02-gekko-greed.mp4",
+   "a": 4.1,
+   "b": 4.95,
+   "db": 1,
+   "fx": "film"
+  },
+  {
+   "t": 9.55,
+   "file": "local/footage/old/02-gekko-greed.mp4",
+   "a": 7.9,
+   "b": 8.75,
+   "db": 1,
+   "fx": "film"
+  },
+  {
+   "t": 12.262162162162163,
+   "file": "local/footage/old/15-cramer-bear-fine.mp4",
+   "a": 3.98,
+   "b": 5.3,
+   "db": 2,
+   "fx": "film"
+  },
+  {
+   "t": 12.972972972972974,
+   "file": "local/sfx/riser.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 15.0,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 15.405405405405407,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 15.810810810810812,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 16.216216216216218,
+   "file": "local/sfx/boom.wav",
+   "a": 0,
+   "b": null,
+   "db": -5,
+   "fx": "none"
+  },
+  {
+   "t": 17.532432432432437,
+   "file": "local/footage/retail/01-roaring-kitty-i-like-the-stock.mp4",
+   "a": 24.15,
+   "b": 25.12,
+   "db": 2,
+   "fx": "film"
+  },
+  {
+   "t": 20.32027027027027,
+   "file": "local/footage/retail/02-elon-snl-its-a-hustle.mp4",
+   "a": 9.8,
+   "b": 10.7,
+   "db": 1,
+   "fx": "film"
+  },
+  {
+   "t": 21.10108108108108,
+   "file": "local/footage/retail/02-elon-snl-its-a-hustle.mp4",
+   "a": 14.74,
+   "b": 15.42,
+   "db": 1,
+   "fx": "film"
+  },
+  {
+   "t": 23.10810810810811,
+   "file": "local/footage/retail/12-bitconnect-scream.mp4",
+   "a": 10.9,
+   "b": 12.3,
+   "db": -1,
+   "fx": "film"
+  },
+  {
+   "t": 24.121621621621625,
+   "file": "local/footage/retail/36-saylor-going-up-forever-laura.mp4",
+   "a": 6.1,
+   "b": 7.48,
+   "db": 2,
+   "fx": "film"
+  },
+  {
+   "t": 26.756756756756758,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 27.162162162162165,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 27.56756756756757,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 27.972972972972975,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 28.35837837837838,
+   "file": "local/sfx/zap.wav",
+   "a": 0,
+   "b": null,
+   "db": -8,
+   "fx": "none"
+  },
+  {
+   "t": 28.57837837837838,
+   "file": "local/audio/vo_q.wav",
+   "a": 0,
+   "b": null,
+   "db": 0,
+   "fx": "vo"
+  },
+  {
+   "t": 28.652664092664093,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 28.70123552123552,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 28.74980694980695,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 28.79837837837838,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 28.84694980694981,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 28.895521235521237,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 28.944092664092665,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 28.992664092664093,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.04123552123552,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.08980694980695,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.13837837837838,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.18694980694981,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.235521235521237,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.284092664092665,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.332664092664093,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.38123552123552,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.42980694980695,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.47837837837838,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.52694980694981,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.575521235521236,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.624092664092665,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.672664092664093,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.72123552123552,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.76980694980695,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.81837837837838,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.86694980694981,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.915521235521236,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 29.964092664092664,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 30.012664092664092,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 30.06123552123552,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 30.109806949806952,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 30.15837837837838,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 30.206949806949808,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 30.255521235521236,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 30.304092664092664,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 30.810810810810814,
+   "file": "local/sfx/boom.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 31.216216216216218,
+   "file": "local/footage/ai/06-jensen-iphone-moment.mp4",
+   "a": 6.4,
+   "b": 9.28,
+   "db": 0,
+   "fx": "film"
+  },
+  {
+   "t": 30.922573456854032,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 30.933066732353883,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 30.94364362181399,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 30.954305811072054,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 30.96505504101684,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 30.975893110090702,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 30.986821876938713,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 30.99784326321494,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.008959256557354,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.020171913743894,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.031483364043115,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.04289581277437,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.054411545093416,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.06603293002134,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.07776242473569,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.089602579145122,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.10155604077051,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.113625559957782,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.12581399545033,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.138124320351576,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.150559628511296,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.16312314137286,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.175818215322522,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.188648349585968,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.201617194722633,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.21472856177351,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.227986432124496,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.24139496815454,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.254958524745597,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.26868166174067,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.282569157446392,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.296626023288578,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.310857519742374,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.325269173674272,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.339866797250853,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.35465650858953,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.369644754350112,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.38483833449322,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.400244429463246,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.415870630090364,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.43172497054911,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.4478159647614,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.464152646691193,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.480744615047836,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.497602082997858,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.514735933583545,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.532157781663678,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.549880043333022,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.56791601394592,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.5862799560746,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.60498719898141,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.624054251488115,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.643498930498637,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.663340507892208,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.683599879076805,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.70429975720783,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.725464897978565,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.74712236103024,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.769301815489108,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.792035899016074,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.81536064219559,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.839315973290503,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.863946322628454,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.88930135155959,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.915436838611882,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.942415766012566,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.97030966440597,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 31.999200294294734,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.02918177243313,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.06036329480499,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.092872672530724,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.126860995708576,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.16250889443174,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.200035114251925,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.239708535275604,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.28186547396427,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.326935383929595,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.37548048960535,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.428259749789255,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.48633808616553,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.55128688571069,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.62558917286502,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.713576905564175,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.82410056632142,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 32.981659163721595,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 33.58783783783784,
+   "file": "local/sfx/key.wav",
+   "a": 0,
+   "b": null,
+   "db": -14,
+   "fx": "none"
+  },
+  {
+   "t": 34.054054054054056,
+   "file": "local/sfx/click.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 34.17567567567568,
+   "file": "local/sfx/whoosh.wav",
+   "a": 0,
+   "b": null,
+   "db": -10,
+   "fx": "none"
+  },
+  {
+   "t": 34.21621621621622,
+   "file": "local/sfx/shutter.wav",
+   "a": 0,
+   "b": null,
+   "db": -8,
+   "fx": "none"
+  },
+  {
+   "t": 34.37837837837838,
+   "file": "local/sfx/shutter.wav",
+   "a": 0,
+   "b": null,
+   "db": -8,
+   "fx": "none"
+  },
+  {
+   "t": 34.54054054054054,
+   "file": "local/sfx/shutter.wav",
+   "a": 0,
+   "b": null,
+   "db": -8,
+   "fx": "none"
+  },
+  {
+   "t": 36.60810810810811,
+   "file": "local/sfx/whoosh.wav",
+   "a": 0,
+   "b": null,
+   "db": -10,
+   "fx": "none"
+  },
+  {
+   "t": 39.04054054054054,
+   "file": "local/sfx/whoosh.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 39.72972972972973,
+   "file": "local/sfx/click.wav",
+   "a": 0,
+   "b": null,
+   "db": -3,
+   "fx": "none"
+  },
+  {
+   "t": 40.62162162162163,
+   "file": "local/sfx/whoosh.wav",
+   "a": 0,
+   "b": null,
+   "db": -12,
+   "fx": "none"
+  },
+  {
+   "t": 40.54054054054054,
+   "file": "local/sfx/blip.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 40.74324324324324,
+   "file": "local/sfx/blip.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 40.94594594594595,
+   "file": "local/sfx/blip.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 41.14864864864865,
+   "file": "local/sfx/blip.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 41.351351351351354,
+   "file": "local/sfx/blip.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 42.16216216216216,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 42.56756756756757,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 42.972972972972975,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 43.37837837837838,
+   "file": "local/sfx/hit.wav",
+   "a": 0,
+   "b": null,
+   "db": -6,
+   "fx": "none"
+  },
+  {
+   "t": 43.78378378378379,
+   "file": "local/sfx/boom.wav",
+   "a": 0,
+   "b": null,
+   "db": -2,
+   "fx": "none"
+  }
+ ],
+ "lufs": -14,
+ "music": {
+  "file": "local/music.wav",
+  "start": 0.0,
+  "fade_in": 0.03,
+  "fade_out": 0.8,
+  "segments": [
+   {
+    "t": 0.0,
+    "a": 6.551,
+    "b": 34.92937837837838
+   },
+   {
+    "t": 30.810810810810814,
+    "a": 48.713,
+    "b": 61.68597297297298
+   },
+   {
+    "t": 43.78378378378379,
+    "a": 61.686,
+    "b": 62.6
+   }
+  ]
+ }
+}

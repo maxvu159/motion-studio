@@ -1,0 +1,163 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>motion-studio canvas runtime</title>
+<style>html,body{margin:0;background:#000}canvas{display:block}</style></head>
+<body><canvas id="c"></canvas>
+<script>
+/*
+ * Deterministic canvas runtime. Every frame is a pure function of its index: renderFrame(f).
+ * Opened by render.js as file://.../comp.html?project=<abs project dir>&root=<abs repo root>.
+ * Reads <project>/edl.json (written by lib/montage.py or by hand), the brand it names, and the
+ * plugin scripts it lists. Built-in shot types: clip, black, title, cursor. Plugins add more
+ * via MS.scene('type', (sh, f) => {...}).
+ */
+const qs = new URLSearchParams(location.search);
+const ROOT = qs.get('root'), PROJECT = qs.get('project');
+const cv = document.getElementById('c'), ctx = cv.getContext('2d');
+const MS = window.MS = { scenes: {}, scene(type, fn) { this.scenes[type] = fn; } };
+let EDL, W, H, FPS, C, FONT, BRAND;
+
+// ---------- helpers exposed to plugins
+const cl = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const lerp = (a, b, t) => a + (b - a) * t;
+const eio = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const eo = t => 1 - Math.pow(1 - t, 3), eo5 = t => 1 - Math.pow(1 - t, 5);
+const hash = n => { n = Math.sin(n * 127.1 + 311.7) * 43758.5453; return n - Math.floor(n); };
+const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.roundRect(x, y, w, h, r); };
+const txt = (s, x, y, font, col, align = 'left', base = 'alphabetic') => { ctx.font = font; ctx.fillStyle = col; ctx.textAlign = align; ctx.textBaseline = base; ctx.fillText(s, x, y); };
+function spaced(s, x, y, font, col, track, align = 'left') {
+  ctx.font = font; ctx.fillStyle = col; ctx.textBaseline = 'alphabetic';
+  let w = 0; for (const ch of s) w += ctx.measureText(ch).width + track; w -= track;
+  let cx = align === 'center' ? x - w / 2 : align === 'right' ? x - w : x; ctx.textAlign = 'left';
+  for (const ch of s) { ctx.fillText(ch, cx, y); cx += ctx.measureText(ch).width + track; } return w;
+}
+function wrap(s, font, maxw) { ctx.font = font; const out = []; let cur = ''; for (const w of s.split(' ')) { const t = cur ? cur + ' ' + w : w; if (ctx.measureText(t).width > maxw && cur) { out.push(cur); cur = w; } else cur = t; } if (cur) out.push(cur); return out; }
+const alpha = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${(n >> 16) & 255},${(n >> 8) & 255},${n & 255},${a})`; };
+const cache = new Map();
+function img(url) {   // ImageBitmap via fetch: decoding off the main thread keeps frame times stable
+  if (cache.has(url)) return cache.get(url);
+  const p = fetch(url).then(r => r.ok ? r.blob() : null).then(b => b ? createImageBitmap(b) : null).catch(() => null);
+  cache.set(url, p);
+  if (cache.size > 60) { const k = cache.keys().next().value; const q = cache.get(k); cache.delete(k); q.then(b => b && b.close && b.close()); }
+  return p;
+}
+function coverDraw(im, z, ox = 0, oy = 0, dw = W, dh = H, dx = 0, dy = 0) {
+  const s = Math.max(dw / im.width, dh / im.height) * z, w = im.width * s, h = im.height * s;
+  ctx.save(); ctx.beginPath(); ctx.rect(dx, dy, dw, dh); ctx.clip(); ctx.drawImage(im, dx + (dw - w) / 2 + ox, dy + (dh - h) / 2 + oy, w, h); ctx.restore();
+}
+const GRADE = { bw: 'grayscale(1) contrast(1.38) brightness(.92)', sepia: 'sepia(.6) contrast(1.22) saturate(.75) brightness(.95)', pop: 'contrast(1.16) saturate(1.3)',
+  cool: 'contrast(1.12) saturate(.8) brightness(.95)', hot: 'contrast(1.25) saturate(1.5) brightness(1.02)', none: 'none' };
+const grain = []; for (let g = 0; g < 6; g++) { const o = document.createElement('canvas'); o.width = o.height = 512; const x = o.getContext('2d'); const d = x.createImageData(512, 512);
+  for (let i = 0; i < d.data.length; i += 4) { const v = 128 + (Math.random() - .5) * 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; } x.putImageData(d, 0, 0); grain.push(o); }
+let acc, ax;  // motion blur: average N sub-frames drawn by drawAt(fractionalFrame)
+async function blur(drawAt, f, N = 6, shutter = .5) {
+  ax.clearRect(0, 0, W, H);
+  for (let i = 0; i < N; i++) { await drawAt(f - shutter / 2 + shutter * i / (N - 1)); ax.globalAlpha = 1 / (i + 1); ax.drawImage(cv, 0, 0); }
+  ax.globalAlpha = 1; ctx.drawImage(acc, 0, 0);
+}
+/** Brand mark SVG -> [{path: Path2D, fill, role}] (plain <path d> elements only). */
+async function markPaths() {
+  const s = await (await fetch(`${ROOT}/${EDL.brand}/${BRAND.logo.mark}`)).text();
+  const doc = new DOMParser().parseFromString(s, 'image/svg+xml'); const vb = (doc.documentElement.getAttribute('viewBox') || '0 0 64 64').split(/\s+/).map(Number);
+  return { vb, paths: [...doc.querySelectorAll('path')].map(p => ({ path: new Path2D(p.getAttribute('d')), fill: p.getAttribute('fill') || '#fff', role: p.getAttribute('data-role') || '' })) };
+}
+Object.assign(MS, { cl, lerp, eio, eo, eo5, hash, rr, txt, spaced, wrap, alpha, img, coverDraw, GRADE, blur, markPaths, get ctx() { return ctx; } });
+
+// ---------- boot
+const ready = (async () => {
+  EDL = await (await fetch(`${PROJECT}/edl.json?${Date.now()}`)).json();
+  W = cv.width = EDL.w || 1920; H = cv.height = EDL.h || 1080; FPS = EDL.fps || 30;
+  acc = document.createElement('canvas'); acc.width = W; acc.height = H; ax = acc.getContext('2d');
+  BRAND = await (await fetch(`${ROOT}/${EDL.brand}/brand.json`)).json(); C = BRAND.colors; FONT = `"${BRAND.type.family}"`;
+  for (const { weight, file } of BRAND.type.files) { const ff = new FontFace(BRAND.type.family, `url(${ROOT}/${EDL.brand}/${file})`, { weight: String(weight) }); await ff.load(); document.fonts.add(ff); }
+  Object.assign(MS, { W, H, FPS, C, FONT, BRAND, EDL, ROOT, PROJECT });
+  for (const p of EDL.plugins || []) await new Promise((res, rej) => { const s = document.createElement('script'); s.src = p.startsWith('/') ? p : `${ROOT}/${p}`; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+  if (MS.init) await MS.init();
+})();
+
+// ---------- built-in shots
+function beatPunch(f) { const t = f / FPS; let p = 0; for (const b of EDL.punch || []) { const d = t - b; if (d >= 0 && d < .35) p = Math.max(p, Math.exp(-d * 11)); } return p; }
+async function drawClip(sh, f) {
+  const i = f - sh.t0, n = sh.t1 - sh.t0, idx = Math.min(sh.nf, Math.floor(i * (sh.speed || 1)) + 1);
+  const im = await img(`${PROJECT}/local/shots/${sh.id}/${String(idx).padStart(4, '0')}.jpg`);
+  const pu = sh.punch ? beatPunch(f) : 0, z = (sh.z0 || 1.04) + ((sh.z1 || 1.10) - (sh.z0 || 1.04)) * (i / n) + pu * .06;
+  if (sh.mode === 'card' || sh.mode === 'cardDark') {
+    ctx.fillStyle = sh.mode === 'card' ? '#ECEAE4' : '#050505'; ctx.fillRect(0, 0, W, H); ctx.filter = GRADE[sh.grade || 'none'];
+    const cw = sh.cw || 1060, ch = Math.round(cw * 9 / 16), cx = (W - cw) / 2, cy = (H - ch) / 2 - 30;
+    if (im) coverDraw(im, 1 + (i / n) * .05 + pu * .03, 0, 0, cw, ch, cx, cy); ctx.filter = 'none';
+    if (sh.cap) { const show = sh.cap.slice(0, Math.floor(cl(i / (n * .5)) * sh.cap.length)), col = sh.mode === 'card' ? '#1a1a1a' : '#d8d8d8'; txt(show, W / 2, cy + ch + 58, `500 26px ${FONT}`, col, 'center');
+      if (i % 16 < 8) { ctx.font = `500 26px ${FONT}`; ctx.fillStyle = C.accent; ctx.fillRect(W / 2 + ctx.measureText(show).width / 2 + 4, cy + ch + 36, 12, 26); } }
+  } else { ctx.filter = GRADE[sh.grade || 'none']; if (im) coverDraw(im, z, (sh.dx || 0) * (i / n), (sh.dy || 0) * (i / n)); }
+  ctx.filter = 'none';
+}
+function drawTitle(sh, f) {   // brand title card: line(s) of display type on bg
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W, H); const t = (f - sh.t0) / FPS, p = eo5(cl(t / .5));
+  (sh.lines || []).forEach((ln, i) => { ctx.globalAlpha = p; spaced(ln, W / 2, H / 2 + (i - (sh.lines.length - 1) / 2) * (sh.size || 120) * 1.2 + (sh.size || 120) * .35 + (1 - p) * 30, `${BRAND.type.displayWeight} ${sh.size || 120}px ${FONT}`, i === sh.accentLine ? C.accent : C.text, -2, 'center'); });
+  ctx.globalAlpha = 1;
+}
+function drawCursorLine(sh, f) {   // black screen, centred typed line with caret
+  ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); const t = (f - sh.t0) / FPS, s = sh.text || '';
+  const n = Math.floor(cl((t - (sh.td || .15)) / (sh.tdur || 1.9)) * s.length), sub = s.slice(0, n);
+  ctx.font = `500 44px ${FONT}`; const w = ctx.measureText(s).width, x = W / 2 - w / 2; txt(sub, x, H / 2 + 14, `500 44px ${FONT}`, '#fff');
+  const cw = ctx.measureText(sub).width; if (((f >> 3) & 1) || n < s.length) { ctx.fillStyle = C.accent; ctx.fillRect(x + cw + 4, H / 2 - 22, 22, 46); }
+}
+function drawCaption(cp, f) {   // typed quote + speaker, lower left
+  const t = f / FPS, p = cl((t - cp.t0) / Math.max(.01, (cp.tt || cp.t1) - cp.t0)), fade = cl((cp.t1 + .25 - t) / .25); if (fade <= 0) return;
+  ctx.globalAlpha = fade; const x = 110, y = H - 150, F = `500 46px ${FONT}`;
+  if (cp.who) spaced(cp.who.toUpperCase(), x, y - 62, `500 22px ${FONT}`, 'rgba(255,255,255,.62)', 2.5);
+  const lines = wrap(cp.text, F, 1500); let n = Math.floor(p * cp.text.length + .0001);
+  lines.forEach((ln, li) => {
+    const k = cl(n, 0, ln.length); n -= ln.length + 1; const sub = ln.slice(0, k); ctx.font = F; const tw = ctx.measureText(sub).width;
+    if (sub.length) { ctx.fillStyle = 'rgba(0,0,0,.72)'; ctx.fillRect(x - 12, y - 40 + li * 58, tw + 24, 56); }
+    txt(sub, x, y + li * 58, F, '#fff');
+    if ((k < ln.length && k > 0) || (li === lines.length - 1 && k === ln.length && ((f >> 3) & 1))) { ctx.fillStyle = C.accent; ctx.fillRect(x + tw + 4, y - 34 + li * 58, 20, 44); }
+    if (k < ln.length) n = -1e9;
+  });
+  ctx.globalAlpha = 1;
+}
+function drawTag(sh, f) {   // small REC-style label top-left
+  if (!sh.tag) return; ctx.globalAlpha = cl((f - sh.t0) / 3); ctx.font = `500 22px ${FONT}`; const w = ctx.measureText(sh.tag).width;
+  ctx.fillStyle = 'rgba(0,0,0,.55)'; ctx.fillRect(96, 78, w + 64, 40); ctx.fillStyle = C.negative; ctx.beginPath(); ctx.arc(118, 98, 7, 0, 7); ctx.fill();
+  txt(sh.tag, 136, 106, `500 22px ${FONT}`, '#fff'); ctx.globalAlpha = 1;
+}
+function drawBig(bw, f) {   // one slammed line of display type, on the beat
+  const t = f / FPS; if (t < bw.t0 || t >= bw.t1) return; const lt = t - bw.t0, sz = bw.size || 170; ctx.save();
+  if (bw.bg) { ctx.fillStyle = bw.bg; ctx.globalAlpha = bw.bga ?? 1; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+  const s = 1 + .08 * Math.exp(-lt * 9) + lt * .025; ctx.translate(W / 2, H / 2 + (bw.y || 0)); ctx.scale(s, s);
+  bw.text.split('\n').forEach((ln, i, a) => spaced(ln, 0, (i - (a.length - 1) / 2) * sz * .98 + sz * .36, `700 ${sz}px ${FONT}`, bw.col === 'accent' ? C.accent : bw.col === 'negative' ? C.negative : (bw.col || '#fff'), -sz * .02, 'center'));
+  ctx.restore();
+}
+let off, ox, off2, ox2;
+function rgbSplit(amt) {
+  if (!off) { off = document.createElement('canvas'); off.width = W; off.height = H; ox = off.getContext('2d'); off2 = document.createElement('canvas'); off2.width = W; off2.height = H; ox2 = off2.getContext('2d'); }
+  ox.clearRect(0, 0, W, H); ox.drawImage(cv, 0, 0); ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); ctx.globalCompositeOperation = 'lighter';
+  [['#ff0000', -amt, 0], ['#00ff00', 0, 0], ['#0000ff', amt, amt * .3]].forEach(([c, dx, dy]) => { ox2.globalCompositeOperation = 'source-over'; ox2.drawImage(off, 0, 0); ox2.globalCompositeOperation = 'multiply'; ox2.fillStyle = c; ox2.fillRect(0, 0, W, H); ctx.drawImage(off2, dx, dy); });
+  ctx.globalCompositeOperation = 'source-over';
+}
+
+// ---------- frame
+async function renderFrame(f) {
+  await ready; const t = f / FPS;
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.globalAlpha = 1; ctx.filter = 'none'; ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H);
+  const sh = EDL.shots.filter(s => f >= s.t0 && f < s.t1).pop();   // later-starting shots win (inserts over a long scene)
+  if (sh) {
+    if (sh.type === 'clip') await drawClip(sh, f);
+    else if (sh.type === 'title') drawTitle(sh, f);
+    else if (sh.type === 'cursor') drawCursorLine(sh, f);
+    else if (MS.scenes[sh.type]) await MS.scenes[sh.type](sh, f);
+    else { ctx.fillStyle = '#000'; ctx.fillRect(0, 0, W, H); }
+    if (sh.dim) { ctx.fillStyle = `rgba(0,0,0,${sh.dim})`; ctx.fillRect(0, 0, W, H); }
+    if (sh.type === 'clip') drawTag(sh, f);
+  }
+  for (const bw of EDL.big || []) drawBig(bw, f);
+  for (const cp of EDL.captions || []) if (t >= cp.t0 && t < cp.t1 + .25) drawCaption(cp, f);
+  const g = (EDL.glitch || []).find(x => f >= x[0] && f < x[1]); if (g) rgbSplit(g[2] * (1 - (f - g[0]) / (g[1] - g[0])) + 4);
+  for (const fl of EDL.flash || []) { const d = f - fl[0]; if (d >= 0 && d < fl[1]) { ctx.fillStyle = `rgba(255,255,255,${(fl[2] || 1) * (1 - d / fl[1])})`; ctx.fillRect(0, 0, W, H); } }
+  if (EDL.vignette !== false) { const vg = ctx.createRadialGradient(W / 2, H / 2, H * .35, W / 2, H / 2, H * .95); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.55)'); ctx.fillStyle = vg; ctx.fillRect(0, 0, W, H); }
+  const ga = sh && sh.grain != null ? sh.grain : (EDL.grain ?? .13);
+  if (ga > 0) { ctx.globalCompositeOperation = 'overlay'; ctx.globalAlpha = ga; const gt = grain[f % 6], o1 = (hash(f) * 512) | 0, o2 = (hash(f + 9) * 512) | 0;
+    for (let x = -o1; x < W; x += 512) for (let y = -o2; y < H; y += 512) ctx.drawImage(gt, x, y); ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1; }
+  const fo = EDL.fadeOut; if (fo && f >= fo[0]) { ctx.fillStyle = `rgba(0,0,0,${cl((f - fo[0]) / (fo[1] - fo[0]))})`; ctx.fillRect(0, 0, W, H); }
+  return true;
+}
+window.renderFrame = renderFrame;
+</script></body></html>

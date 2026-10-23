@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+# media, renders, generated timelines — never committed (licensing + size)
+projects/*/local/
+projects/*/edl.json
+refs/
+engines/remotion/out/
+engines/remotion/public/brand/

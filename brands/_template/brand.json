@@ -1,0 +1,125 @@
+{
+  "name": "<Brand name>",
+  "wordmark": "<Text shown next to the mark, or null to use name>",
+  "colors": {
+    "bg": "#0B111C",
+    "surface": "#121A29",
+    "surface2": "#182235",
+    "line": "#26324A",
+    "text": "#F4F7FB",
+    "dim": "#93A0B9",
+    "dim2": "#5B6782",
+    "accent": "#6EE7F9",
+    "accentInk": "#081018",
+    "positive": "#34D399",
+    "negative": "#F87171",
+    "warn": "#FBBF24"
+  },
+  "type": {
+    "family": "Inter",
+    "files": [
+      {
+        "weight": 400,
+        "file": "fonts/Inter-Regular.otf"
+      },
+      {
+        "weight": 500,
+        "file": "fonts/Inter-Medium.otf"
+      },
+      {
+        "weight": 600,
+        "file": "fonts/Inter-SemiBold.otf"
+      },
+      {
+        "weight": 700,
+        "file": "fonts/Inter-Bold.otf"
+      }
+    ],
+    "displayWeight": 600,
+    "displayTracking": "-0.03em",
+    "labelTracking": "0.1em"
+  },
+  "radii": {
+    "card": 16,
+    "hero": 32,
+    "pill": 9999
+  },
+  "motion": {
+    "ease": [
+      0.16,
+      1,
+      0.3,
+      1
+    ],
+    "easeData": [
+      0.45,
+      0.5,
+      0.0,
+      0.8
+    ],
+    "springs": false
+  },
+  "logo": {
+    "mark": "logos/mark.svg"
+  },
+  "background": {
+    "type": "mesh",
+    "mesh": [
+      [
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000"
+      ],
+      [
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000"
+      ],
+      [
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000"
+      ],
+      [
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000"
+      ],
+      [
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000",
+        "#000000"
+      ]
+    ],
+    "grain": 8
+  },
+  "rules": {
+    "do": [
+      "Accent colour only for the primary action and one highlight per frame",
+      "Brand font everywhere, numbers tabular"
+    ],
+    "dont": [
+      "No springs or bounce on UI",
+      "No pure black backgrounds",
+      "No claims that are not in the content source"
+    ],
+    "claimsSource": null
+  },
+  "_doc": {
+    "colors": "Hex values. bg = page/video background, surface/surface2 = cards and rows, line = borders, accent = the one CTA/highlight colour, accentInk = text on accent.",
+    "type": "Font files live next to brand.json (fonts/). Weights you list are the only weights that exist \u2014 the engines never fake bold. Run tools/glyph_check.py on your copy.",
+    "background": "type = mesh (5x5 colour grid, top row first) | flat (uses colors.bg) | image (set background.image to a file in this folder).",
+    "logo": "mark = SVG with plain <path> elements. Paths tagged data-role=\"glyph\" are what the launch-teaser particles assemble into.",
+    "rules": "Read by Claude before writing copy. claimsSource = path to the doc every on-screen claim must come from."
+  }
+}

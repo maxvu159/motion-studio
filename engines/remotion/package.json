@@ -1,0 +1,30 @@
+{
+  "name": "motion-studio-remotion",
+  "version": "1.0.0",
+  "description": "Remotion engine for motion-studio (brand-driven templates)",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@react-three/fiber": "^9.7.0",
+    "@remotion/cli": "4.0.520",
+    "@remotion/three": "4.0.520",
+    "@types/three": "^0.185.4",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.520",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "brand": "node scripts/sync-brand.mjs",
+    "studio": "remotion studio",
+    "still": "remotion still",
+    "render": "remotion render",
+    "typecheck": "tsc --noEmit"
+  }
+}

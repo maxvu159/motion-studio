@@ -1,0 +1,11 @@
+{
+ "total": 9.524,
+ "cues": [],
+ "lufs": -14,
+ "music": {
+  "file": "local/music.wav",
+  "start": 1.905,
+  "fade_in": 0.03,
+  "fade_out": 1.2
+ }
+}

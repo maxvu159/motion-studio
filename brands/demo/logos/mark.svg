@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path data-role="tile" fill="#6EE7F9" d="M16 0H48A16 16 0 0 1 64 16V48A16 16 0 0 1 48 64H16A16 16 0 0 1 0 48V16A16 16 0 0 1 16 0Z"/>
+  <path data-role="glyph" fill="#081018" d="M18 46V18H25V46ZM18 18H25L46 46H39ZM39 46V18H46V46Z"/>
+</svg>

@@ -1,0 +1,49 @@
+{
+  "name": "Northwind",
+  "wordmark": "Northwind",
+  "colors": {
+    "bg": "#0B111C",
+    "surface": "#121A29",
+    "surface2": "#182235",
+    "line": "#26324A",
+    "text": "#F4F7FB",
+    "dim": "#93A0B9",
+    "dim2": "#5B6782",
+    "accent": "#6EE7F9",
+    "accentInk": "#081018",
+    "positive": "#34D399",
+    "negative": "#F87171",
+    "warn": "#FBBF24"
+  },
+  "type": {
+    "family": "Inter",
+    "files": [
+      { "weight": 400, "file": "fonts/Inter-Regular.otf" },
+      { "weight": 500, "file": "fonts/Inter-Medium.otf" },
+      { "weight": 600, "file": "fonts/Inter-SemiBold.otf" },
+      { "weight": 700, "file": "fonts/Inter-Bold.otf" }
+    ],
+    "displayWeight": 600,
+    "displayTracking": "-0.03em",
+    "labelTracking": "0.1em"
+  },
+  "radii": { "card": 16, "hero": 32, "pill": 9999 },
+  "motion": { "ease": [0.16, 1, 0.3, 1], "easeData": [0.45, 0.5, 0.0, 0.8], "springs": false },
+  "logo": { "mark": "logos/mark.svg" },
+  "background": {
+    "type": "mesh",
+    "mesh": [
+      ["#0A1630", "#0C2142", "#123258", "#1B4F7A", "#23699A"],
+      ["#09132A", "#0B1D3A", "#102C50", "#1A4D78", "#2A79A8"],
+      ["#08122A", "#0A1B36", "#0F2A4C", "#1C5A86", "#3591BF"],
+      ["#09142C", "#0B1E3C", "#113052", "#1A507C", "#2B7FAE"],
+      ["#071026", "#091A33", "#0E2848", "#164670", "#1F6894"]
+    ],
+    "grain": 8
+  },
+  "rules": {
+    "do": ["Accent colour only for the primary action and one highlight per frame", "Brand font everywhere, numbers tabular"],
+    "dont": ["No springs or bounce on UI", "No pure black backgrounds", "No claims that are not in the content source"],
+    "claimsSource": null
+  }
+}

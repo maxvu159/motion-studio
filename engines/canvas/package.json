@@ -1,0 +1,7 @@
+{
+  "name": "motion-studio-canvas",
+  "private": true,
+  "description": "Deterministic canvas engine: renderFrame(f) in a page, captured by Playwright",
+  "scripts": { "setup": "playwright install chromium" },
+  "dependencies": { "playwright": "1.58.0" }
+}
